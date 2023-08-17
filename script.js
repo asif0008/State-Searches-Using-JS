@@ -6,7 +6,11 @@ const matchList = document.querySelector('#match-list');
 const searchStates = async () => {
     let searchText = search.value.trim();
     if (searchText === '') {
-        matchList.innerHTML = '';
+        matchList.style.opacity = 0;
+        setTimeout(() => {
+            matchList.style.opacity = 1;
+            matchList.innerHTML = '';
+        }, 500);
         return;
     }
     const res = await fetch('/data.json');
